@@ -1,0 +1,20 @@
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.text {
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.socials {
+  display: flex;
+  gap: 1.25rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-weight: 600;
+}

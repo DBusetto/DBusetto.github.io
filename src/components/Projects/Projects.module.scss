@@ -1,0 +1,22 @@
+@use '../../styles/abstracts' as *;
+
+.grid {
+  @include auto-grid;
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+}
+
+.description {
+  color: var(--text-muted);
+  flex: 1;
+}
+
+.links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  font-weight: 600;
+}

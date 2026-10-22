@@ -1,0 +1,16 @@
+// Valori di design usati in fase di compilazione.
+// I colori invece sono custom properties CSS (vedi global.scss), così il tema può cambiare a runtime.
+
+$max-width: 1080px;
+$nav-height: 64px;
+$gutter: 1.25rem;
+
+$radius: 14px;
+$radius-pill: 999px;
+
+$transition: 0.15s ease;
+
+$breakpoints: (
+  sm: 640px,
+  md: 900px,
+);

@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { profile } from '../data/portfolio'
+import { profile } from '../../data/portfolio'
+import styles from './Navbar.module.scss'
 
 const links = [
   { href: '#about', label: 'Chi sono' },
@@ -12,18 +13,18 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
 
   return (
-    <header className="navbar">
-      <div className="container navbar-inner">
-        <a href="#top" className="brand">{profile.name}</a>
+    <header className={styles.navbar}>
+      <div className={styles.inner}>
+        <a href="#top" className={styles.brand}>{profile.name}</a>
         <button
-          className="menu-toggle"
+          className={styles.toggle}
           aria-label="Apri menu"
           aria-expanded={open}
           onClick={() => setOpen(!open)}
         >
           ☰
         </button>
-        <nav className={open ? 'nav-links open' : 'nav-links'}>
+        <nav className={open ? `${styles.links} ${styles.open}` : styles.links}>
           {links.map((link) => (
             <a key={link.href} href={link.href} onClick={() => setOpen(false)}>
               {link.label}

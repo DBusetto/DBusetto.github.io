@@ -14,7 +14,8 @@ pnpm preview     # anteprima della build
 ## Personalizzazione
 
 Tutti i contenuti (nome, bio, competenze, progetti, contatti) sono in `src/data/portfolio.ts` (tipi in `src/data/types.ts`).
-Gli stili sono in `src/index.css`; i componenti delle sezioni in `src/components/`.
+Ogni componente ha la sua cartella in `src/components/` con il proprio `.module.scss`.
+Token (breakpoint, spaziature, raggi) e mixin sono in `src/styles/`; colori e tema chiaro/scuro in `src/styles/global.scss`.
 
 ## Deploy
 

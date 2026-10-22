@@ -1,0 +1,18 @@
+@use '../../styles/abstracts' as *;
+
+.section {
+  padding: 5rem 0;
+}
+
+.alt {
+  background: var(--bg-alt);
+}
+
+.inner {
+  @include container;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}

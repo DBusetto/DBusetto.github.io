@@ -1,0 +1,12 @@
+@use '../../styles/abstracts' as *;
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: $radius;
+  padding: 1.5rem;
+}
+
+.interactive {
+  @include lift(4px);
+}

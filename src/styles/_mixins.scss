@@ -1,0 +1,35 @@
+@use 'sass:map';
+@use 'tokens' as *;
+
+@mixin container {
+  width: 100%;
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 $gutter;
+}
+
+// Media query "fino a" un breakpoint, es. @include below(sm) { ... }
+@mixin below($breakpoint) {
+  @media (max-width: map.get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+
+// Griglia responsive di colonne con larghezza minima $min
+@mixin auto-grid($min: 260px, $gap: 1.25rem) {
+  display: grid;
+  gap: $gap;
+  grid-template-columns: repeat(auto-fill, minmax($min, 1fr));
+}
+
+// Leggero sollevamento con bordo accentato all'hover
+@mixin lift($distance: 2px) {
+  transition:
+    transform $transition,
+    border-color $transition;
+
+  &:hover {
+    transform: translateY(-$distance);
+    border-color: var(--accent);
+  }
+}
