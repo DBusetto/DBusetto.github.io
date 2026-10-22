@@ -8,3 +8,4 @@ dist
 !.vscode/extensions.json
 npm-debug.log*
 .playwright-mcp
+.superpowers
