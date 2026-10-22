@@ -10,9 +10,10 @@
 }
 
 .tag {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 500;
   padding: 0.25rem 0.7rem;
   border-radius: $radius-pill;
-  background: color-mix(in srgb, var(--accent) 12%, transparent);
-  color: var(--accent);
+  background: var(--chip-bg);
+  color: var(--pink-light);
 }

@@ -1,28 +1,41 @@
 @use 'abstracts' as *;
 
+// Tutte le variabili del sistema visivo: tema unico scuro con accento rosa.
 :root {
-  --bg: #ffffff;
-  --bg-alt: #f6f7fb;
-  --surface: #ffffff;
-  --text: #1a1d29;
-  --text-muted: #5b6072;
-  --border: #e4e6ef;
-  --accent: #4f46e5;
-  --accent-contrast: #ffffff;
-  color-scheme: light dark;
-}
+  color-scheme: dark;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0f1117;
-    --bg-alt: #151821;
-    --surface: #1a1e29;
-    --text: #e8eaf2;
-    --text-muted: #9aa0b4;
-    --border: #2a2f3d;
-    --accent: #818cf8;
-    --accent-contrast: #0f1117;
-  }
+  // Fondo e testo
+  --bg: #0b0a10;
+  --text: #f6f3f8;
+  --text-muted: #a9a3b5;
+
+  // Identità (rosa)
+  --pink: #ff2d95;
+  --pink-light: #ff8fcf;
+  --pink-soft: rgba(255, 45, 149, 0.22);
+  --pink-edge: rgba(255, 140, 205, 0.35);
+  --chip-bg: rgba(255, 45, 149, 0.14);
+  --gradient-text: linear-gradient(120deg, #ff2d95, #ff7ac6);
+  // Velo scuro sopra il gradiente del pulsante: porta il testo bianco sopra 4.5:1 su tutta la sfumatura.
+  --primary-scrim: rgba(0, 0, 0, 0.3);
+  --gradient-primary: linear-gradient(var(--primary-scrim), var(--primary-scrim)), linear-gradient(120deg, #ff2d95, #ff6fb8);
+  --shadow-primary: 0 6px 18px rgba(255, 45, 149, 0.3);
+
+  // Aloni fissi sullo sfondo: contenuti, il rosa è un accento e non riempie il fondo.
+  --glow-main: rgba(255, 45, 149, 0.34);
+  --glow-soft: rgba(255, 122, 198, 0.18);
+
+  // Vetro
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-blur: blur(16px) saturate(160%);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-rim: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  --glass-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  --glass-fallback: rgba(24, 21, 32, 0.96);
+
+  // Tipografia e focus
+  --font-sans: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --focus-ring: 0 0 0 2px var(--bg), 0 0 0 4px var(--pink-light);
 }
 
 *,
@@ -31,27 +44,62 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: $nav-height;
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
 }
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  min-height: 100vh;
+  min-height: 100dvh;
+  font-family: var(--font-sans);
   line-height: 1.6;
-  background: var(--bg);
+  background-color: var(--bg);
   color: var(--text);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Aloni fissi, fermi mentre il contenuto scorre
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+// Alone principale, piccolo, in alto a sinistra
+body::before {
+  background: radial-gradient(520px 420px at 0% 0%, var(--glow-main), transparent 70%);
+}
+
+// Alone secondario, più tenue, in basso a destra
+body::after {
+  background: radial-gradient(420px 380px at 100% 100%, var(--glow-soft), transparent 70%);
 }
 
 a {
-  color: var(--accent);
+  color: var(--pink-light);
   text-decoration: none;
 
   &:hover {
     text-decoration: underline;
   }
+
+  @include focus-ring;
 }
 
 h1,
@@ -59,8 +107,14 @@ h2,
 h3 {
   line-height: 1.2;
   margin: 0 0 0.5em;
+  letter-spacing: -0.01em;
 }
 
 h3 {
   font-size: 1.15rem;
+}
+
+img {
+  max-width: 100%;
+  display: block;
 }

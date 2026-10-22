@@ -15,6 +15,13 @@
   }
 }
 
+// Media query "da" un breakpoint in su, complementare a below()
+@mixin above($breakpoint) {
+  @media (min-width: map.get($breakpoints, $breakpoint) + 1px) {
+    @content;
+  }
+}
+
 // Griglia responsive di colonne con larghezza minima $min
 @mixin auto-grid($min: 260px, $gap: 1.25rem) {
   display: grid;
@@ -22,7 +29,7 @@
   grid-template-columns: repeat(auto-fill, minmax($min, 1fr));
 }
 
-// Leggero sollevamento con bordo accentato all'hover
+// Leggero sollevamento con bordo rosa all'hover
 @mixin lift($distance: 2px) {
   transition:
     transform $transition,
@@ -30,6 +37,37 @@
 
   &:hover {
     transform: translateY(-$distance);
-    border-color: var(--accent);
+    border-color: var(--pink);
+  }
+}
+
+// Superficie "liquid glass": vetro traslucido sfocato con filo di luce in alto.
+// Senza blur (non supportato o trasparenza ridotta) diventa quasi opaca, per tenere il testo leggibile.
+@mixin glass($fallback: var(--glass-fallback)) {
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-rim), var(--glass-shadow);
+
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    background: $fallback;
+  }
+
+  @media (prefers-reduced-transparency: reduce) {
+    background: $fallback;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+// Anello di focus rosa per la navigazione da tastiera.
+// Il contorno trasparente resta: con i colori forzati (temi a contrasto di Windows) box-shadow sparisce
+// e il sistema colora il contorno, così il focus resta visibile.
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    box-shadow: var(--focus-ring);
   }
 }

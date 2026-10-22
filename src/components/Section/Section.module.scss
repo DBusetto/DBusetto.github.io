@@ -1,11 +1,7 @@
 @use '../../styles/abstracts' as *;
 
 .section {
-  padding: 5rem 0;
-}
-
-.alt {
-  background: var(--bg-alt);
+  padding: 4.5rem 0;
 }
 
 .inner {
@@ -13,6 +9,6 @@
 }
 
 .title {
-  font-size: 2rem;
+  font-size: clamp(1.6rem, 3vw, 2rem);
   margin-bottom: 2rem;
 }

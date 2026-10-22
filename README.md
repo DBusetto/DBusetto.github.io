@@ -9,16 +9,21 @@ pnpm install
 pnpm dev         # server di sviluppo su http://localhost:5173
 pnpm build       # type-check + build di produzione in /dist
 pnpm preview     # anteprima della build
+pnpm test        # test della logica (Vitest)
 ```
 
 ## Personalizzazione
 
 Tutti i contenuti (nome, bio, competenze, progetti, contatti) sono in `src/data/portfolio.ts` (tipi in `src/data/types.ts`).
-Ogni componente ha la sua cartella in `src/components/` con il proprio `.module.scss`.
-Token (breakpoint, spaziature, raggi) e mixin sono in `src/styles/`; colori e tema chiaro/scuro in `src/styles/global.scss`.
+
+**Aggiungere un progetto.** Aggiungi un oggetto alla lista `projects`. Sono obbligatori `slug`, `title`, `summary` e `tags`. Lo `slug` diventa l'indirizzo della pagina (`/progetti/<slug>`): deve essere unico e fatto solo di minuscole, numeri e trattini (lo controlla `pnpm test`). Gli altri campi (copertina, ruolo, periodo, stato, testi, galleria) sono facoltativi: se mancano, il blocco corrispondente non compare. Le immagini vanno in `public/img/progetti/<slug>/` (non in `public/progetti/`, che è il percorso delle pagine). L'ordine della lista è anche quello di "progetto precedente / successivo".
+
+**Aggiungere una competenza.** Aggiungi `{ name, icon }` al gruppo giusto in `skills`. I loghi vengono da [Devicon](https://devicon.dev): se quello che ti serve non c'è ancora, aggiungi una riga in `src/data/icons.ts` che punti a `devicon/icons/<nome>/<nome>-original.svg`. Senza `icon` la tessera mostra un'icona generica.
+
+**Stile.** Colori, vetro e aloni sono custom properties in `src/styles/global.scss`; token (breakpoint, raggi, misure della barra) e mixin (`glass`, `focus-ring`, ...) sono in `src/styles/`. Ogni componente ha la sua cartella in `src/components/` (le pagine in `src/pages/`) con il proprio `.module.scss`.
 
 ## Deploy
 
-Ogni push su `main` avvia il workflow `.github/workflows/deploy.yml`, che esegue la build e la pubblica su GitHub Pages.
+Ogni push su `main` avvia il workflow `.github/workflows/deploy.yml`, che esegue test e build e pubblica il risultato su GitHub Pages. La build copia `index.html` in `404.html`, così anche i link diretti alle pagine dei progetti funzionano.
 
 Una tantum: su GitHub vai in **Settings → Pages → Build and deployment → Source** e seleziona **GitHub Actions**.

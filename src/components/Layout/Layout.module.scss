@@ -1,0 +1,17 @@
+@use '../../styles/abstracts' as *;
+
+.layout {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+// Colonna del contenuto: lascia spazio alla barra laterale (desktop) o a quella in basso (mobile)
+.column {
+  @include above(md) {
+    padding-left: $sidebar-left + $sidebar-width + $sidebar-inset;
+  }
+
+  @include below(md) {
+    padding-bottom: $bottom-bar-height + 2 * $sidebar-inset;
+  }
+}

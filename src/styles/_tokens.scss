@@ -1,16 +1,25 @@
 // Valori di design usati in fase di compilazione.
-// I colori invece sono custom properties CSS (vedi global.scss), così il tema può cambiare a runtime.
+// I colori invece sono custom properties CSS (vedi global.scss).
 
 $max-width: 1080px;
-$nav-height: 64px;
 $gutter: 1.25rem;
 
 $radius: 14px;
+$radius-card: 18px;
 $radius-pill: 999px;
 
 $transition: 0.15s ease;
 
+// Barra laterale (desktop) e barra in basso (mobile)
+$sidebar-width: 232px;
+// Distanza della barra laterale dal bordo sinistro (desktop)
+$sidebar-left: 32px;
+// Margine della barra dai bordi dello schermo (barra in basso su mobile, spazio in alto/basso su desktop)
+$sidebar-inset: 16px;
+$bottom-bar-height: 64px;
+
 $breakpoints: (
   sm: 640px,
+  // Sotto questa larghezza la barra laterale diventa la barra in basso
   md: 900px,
 );

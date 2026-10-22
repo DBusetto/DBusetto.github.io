@@ -2,11 +2,14 @@
 
 .button {
   @include lift;
-  display: inline-block;
+  @include focus-ring;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   padding: 0.7rem 1.3rem;
   border-radius: $radius-pill;
-  border: 1px solid var(--border);
   font-weight: 600;
+  font-size: 0.95rem;
 
   &:hover {
     text-decoration: none;
@@ -14,11 +17,13 @@
 }
 
 .primary {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--accent-contrast);
+  background: var(--gradient-primary);
+  border: 1px solid transparent;
+  color: #ffffff;
+  box-shadow: var(--shadow-primary);
 }
 
 .secondary {
+  @include glass;
   color: var(--text);
 }

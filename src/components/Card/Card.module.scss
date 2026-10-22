@@ -1,9 +1,8 @@
 @use '../../styles/abstracts' as *;
 
 .card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: $radius;
+  @include glass;
+  border-radius: $radius-card;
   padding: 1.5rem;
 }
 

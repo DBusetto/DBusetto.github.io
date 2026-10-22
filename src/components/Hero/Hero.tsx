@@ -11,8 +11,8 @@ export default function Hero() {
         <p className={styles.role}>{profile.role}</p>
         <p className={styles.tagline}>{profile.tagline}</p>
         <div className={styles.actions}>
-          <ButtonLink href="#projects" variant="primary">Guarda i progetti</ButtonLink>
-          <ButtonLink href="#contact">Contattami</ButtonLink>
+          <ButtonLink to="/#projects" variant="primary">Guarda i progetti</ButtonLink>
+          <ButtonLink to="/#contact">Contattami</ButtonLink>
           {profile.cvUrl && (
             <ButtonLink href={profile.cvUrl} download>Scarica CV</ButtonLink>
           )}

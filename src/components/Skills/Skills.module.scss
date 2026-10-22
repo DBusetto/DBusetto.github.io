@@ -1,5 +1,49 @@
 @use '../../styles/abstracts' as *;
 
+.groups {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.groupTitle {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.9rem;
+}
+
 .grid {
-  @include auto-grid;
+  @include auto-grid(110px, 0.75rem);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tile {
+  @include glass;
+  @include lift;
+  border-radius: $radius;
+  padding: 1rem 0.5rem 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  text-align: center;
+}
+
+.logo {
+  width: 36px;
+  height: 36px;
+}
+
+.fallback {
+  color: var(--pink-light);
+}
+
+.name {
+  font-size: 0.85rem;
+  font-weight: 500;
 }
