@@ -45,8 +45,8 @@ export const timeline: TimelineStep[] = [
   },
   {
     label: 'ITS · 2 years',
-    title: 'Cloud Developer, Pordenone',
-    text: 'Higher technical programme focused on cloud development, graduated with 108/110.',
+    title: 'Cloud Developer, ITS Academy Alto Adriatico',
+    text: 'Higher technical programme in Pordenone focused on cloud development, graduated with 108/110.',
   },
   {
     label: 'Today',
@@ -80,6 +80,7 @@ export const skills: SkillGroup[] = [
   {
     group: 'Cloud & Tools',
     items: [
+      { name: 'AWS', icon: icons.aws },
       { name: 'Azure', icon: icons.azure },
       { name: 'Docker', icon: icons.docker },
       { name: 'Git', icon: icons.git },

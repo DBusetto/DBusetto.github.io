@@ -18,5 +18,7 @@ export { default as githubactions } from 'devicon/icons/githubactions/githubacti
 export { default as docker } from 'devicon/icons/docker/docker-original.svg'
 export { default as firebase } from 'devicon/icons/firebase/firebase-original.svg'
 export { default as vitejs } from 'devicon/icons/vitejs/vitejs-original.svg'
+// Copia locale del logo Devicon con la scritta in bianco (versione per sfondi scuri)
+export { default as aws } from '../assets/icons/aws.svg'
 export { default as azure } from 'devicon/icons/azure/azure-original.svg'
 export { default as github } from 'devicon/icons/github/github-original.svg'
