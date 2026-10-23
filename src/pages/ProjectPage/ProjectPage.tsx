@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect } from 'react'
-import { ArrowLeft, ArrowRight, SquareArrowUpRight } from 'lucide-react'
+import { ArrowLeft, ArrowRight, SquareArrowOutUpRight } from 'lucide-react'
 import { Link, useParams } from 'react-router'
 import ButtonLink from '../../components/ButtonLink/ButtonLink'
 import Card from '../../components/Card/Card'
@@ -104,7 +104,7 @@ export default function ProjectPage() {
           {project.live ? (
             <a href={project.live} target="_blank" rel="noreferrer" className={styles.titleLink}>
               {project.title}
-              <SquareArrowUpRight className={styles.titleIcon} aria-hidden="true" />
+              <SquareArrowOutUpRight className={styles.titleIcon} aria-hidden="true" />
             </a>
           ) : (
             project.title
