@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.inner}>
-        © {new Date().getFullYear()} {profile.name} · Built with React
+        © {new Date().getFullYear()} {profile.name}
       </div>
     </footer>
   )
