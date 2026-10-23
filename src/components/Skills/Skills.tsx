@@ -14,11 +14,13 @@ export default function Skills() {
               {group.items.map((skill) => (
                 <li key={skill.name} className={styles.tile}>
                   {/* Il logo è decorativo: il nome è scritto subito sotto */}
-                  {skill.icon ? (
-                    <img src={skill.icon} alt="" className={styles.logo} width={36} height={36} />
-                  ) : (
-                    <Code className={`${styles.logo} ${styles.fallback}`} aria-hidden="true" />
-                  )}
+                  <span className={styles.badge}>
+                    {skill.icon ? (
+                      <img src={skill.icon} alt="" className={styles.logo} width={36} height={36} />
+                    ) : (
+                      <Code className={`${styles.logo} ${styles.fallback}`} aria-hidden="true" />
+                    )}
+                  </span>
                   <span className={styles.name}>{skill.name}</span>
                 </li>
               ))}

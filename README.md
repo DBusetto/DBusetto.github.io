@@ -14,9 +14,9 @@ pnpm test        # test della logica (Vitest)
 
 ## Personalizzazione
 
-Tutti i contenuti (nome, bio, competenze, progetti, contatti) sono in `src/data/portfolio.ts` (tipi in `src/data/types.ts`).
+Tutti i contenuti (nome, bio, percorso, competenze, progetti, contatti) sono in `src/data/portfolio.ts` (tipi in `src/data/types.ts`).
 
-**Aggiungere un progetto.** Aggiungi un oggetto alla lista `projects`. Sono obbligatori `slug`, `title`, `summary` e `tags`. Lo `slug` diventa l'indirizzo della pagina (`/projects/<slug>`): deve essere unico e fatto solo di minuscole, numeri e trattini (lo controlla `pnpm test`). Gli altri campi (`live` per un prodotto in uso online, che si apre dal titolo della pagina, `demo` per una versione dimostrativa, icona, colori, copertina, ruolo, periodo, stato, testi, funzionalità, galleria) sono facoltativi: se mancano, il blocco corrispondente non compare. Le immagini vanno in `public/img/projects/<slug>/` (non in `public/projects/`, che è il percorso delle pagine). Con `theme` la card e la pagina del progetto prendono i colori della sua app al posto del rosa. L'ordine della lista è anche quello di "progetto precedente / successivo".
+**Aggiungere un progetto.** Aggiungi un oggetto alla lista `projects`. Sono obbligatori `slug`, `title`, `summary` e `tags`. Lo `slug` diventa l'indirizzo della pagina (`/projects/<slug>`): deve essere unico e fatto solo di minuscole, numeri e trattini (lo controlla `pnpm test`). Gli altri campi (`live` per un prodotto in uso online, che si apre dal titolo della pagina, `demo` per una versione dimostrativa, icona, colori, copertina, ruolo, periodo, stato, testi, funzionalità, stack, sfide, galleria) sono facoltativi: se mancano, il blocco corrispondente non compare. Le immagini vanno in `public/img/projects/<slug>/` (non in `public/projects/`, che è il percorso delle pagine). Con `theme` la card e la pagina del progetto prendono i colori della sua app al posto del rosa. L'ordine della lista è anche quello di "progetto precedente / successivo".
 
 **Aggiungere una competenza.** Aggiungi `{ name, icon }` al gruppo giusto in `skills`. I loghi vengono da [Devicon](https://devicon.dev): se quello che ti serve non c'è ancora, aggiungi una riga in `src/data/icons.ts` che punti a `devicon/icons/<nome>/<nome>-original.svg`. Senza `icon` la tessera mostra un'icona generica.
 

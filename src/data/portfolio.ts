@@ -15,7 +15,7 @@ import {
   Zap,
 } from 'lucide-react'
 import * as icons from './icons'
-import type { Profile, Project, SkillGroup, Social } from './types'
+import type { Profile, Project, SkillGroup, Social, TimelineStep } from './types'
 
 export const profile: Profile = {
   name: 'D. Busetto',
@@ -28,8 +28,31 @@ export const profile: Profile = {
 
 export const about: string[] = [
   'I’m a Cloud Developer based in Belluno, Italy. I work in the software development team of a company that designs and manufactures industrial machinery, building applications in an environment where software, connected machines and IoT meet.',
-  'I started coding in high school, out of pure curiosity, thanks to friends who were studying computer science. I then earned a technical diploma in accounting with a specialisation in business information systems, which gave me a solid foundation in both economics and IT. I went on to a two-year ITS programme in Pordenone, graduating with 108/110 and the Cloud Developer qualification.',
   'I enjoy every side of programming, frontend and backend alike. Right now my strongest side is the frontend, where most of my day-to-day work happens, while I keep growing on the backend through personal projects like Scalcia.',
+]
+
+// Percorso mostrato sotto la presentazione, dalla tappa più vecchia alla più recente
+export const timeline: TimelineStep[] = [
+  {
+    label: 'The spark',
+    title: 'Self-taught beginnings',
+    text: 'Started coding in high school out of pure curiosity, inspired by friends who were studying computer science.',
+  },
+  {
+    label: 'Diploma',
+    title: 'Accounting & business information systems',
+    text: 'A technical diploma that gave me solid foundations in both economics and IT.',
+  },
+  {
+    label: 'ITS · 2 years',
+    title: 'Cloud Developer, Pordenone',
+    text: 'Higher technical programme focused on cloud development, graduated with 108/110.',
+  },
+  {
+    label: 'Today',
+    title: 'Software developer, industrial machinery',
+    text: 'Building applications in a team where software, connected machines and IoT meet.',
+  },
 ]
 
 export const skills: SkillGroup[] = [
@@ -74,6 +97,7 @@ export const projects: Project[] = [
     tags: ['React', 'TypeScript', 'Firebase', 'PWA', 'Sass'],
     live: 'https://scalcia-app.web.app',
     icon: '/img/projects/scalcia/icon.png',
+    cover: '/img/projects/scalcia/cover.jpg',
     // Colori dell'app: viola come identità, lime come accento
     theme: {
       accent: '#a855f7',
@@ -81,7 +105,7 @@ export const projects: Project[] = [
       gradient: ['#7c3aed', '#a855f7'],
       glow: '#a3e635',
     },
-    role: 'Solo project · design & development',
+    role: 'Solo · design & dev',
     period: '2026 – present',
     status: 'In production',
     goal: [
@@ -150,16 +174,41 @@ export const projects: Project[] = [
         text: 'Installable on the phone and resilient to poor Wi-Fi: offline results are sent when the connection returns.',
       },
     ],
+    stack: [
+      { name: 'React', icon: icons.react },
+      { name: 'TypeScript', icon: icons.typescript },
+      { name: 'Vite', icon: icons.vitejs },
+      { name: 'Sass', icon: icons.sass },
+      { name: 'Firebase', icon: icons.firebase },
+      { name: 'Vitest' },
+    ],
     approach: [
       'Scalcia is a single-page app built with React, TypeScript and Vite, styled with Sass modules. Firebase handles the backend: Firestore keeps every screen in sync in real time, Authentication provides Google sign-in for staff and players (plus anonymous sessions for the public pages), and Hosting serves it as an installable PWA.',
       'The tournament logic (groups, schedules, standings, tie-breakers, brackets and sub-tournaments) lives in a pure domain layer with no UI or Firebase dependencies, covered by unit tests with Vitest. Permissions are enforced by Firestore security rules, tested against the local emulator.',
       'I designed and built it end to end on my own: product decisions, UI design, implementation and releases, with separate staging and production environments and preview channels to try changes safely before tournament day.',
     ],
     challenges: [
-      'Live and offline at the same time: venues often have weak connectivity, so results entered without a network are queued and synced when it comes back, and the app keeps staff aware of being offline so no score gets lost mid-tournament.',
-      'Fair rules in code: ties resolved by head-to-head results or play-offs, odd numbers of teams handled with byes, and sub-tournaments for every placing all needed careful modelling and many tests on edge cases.',
-      'Security without a custom server: since the app writes straight to Firestore, every role and permission is expressed in security rules and verified with automated tests.',
-      'Keeping the codebase tidy as it grew: I reorganised the project by feature area (tournaments, registration, chat, accounts). Starting with that structure from day one would have saved a large refactor later.',
+      {
+        title: 'Live and offline at the same time',
+        text: 'Venues often have weak connectivity, so results entered without a network are queued and synced when it comes back, and the app keeps staff aware of being offline so no score gets lost mid-tournament.',
+      },
+      {
+        title: 'Fair rules in code',
+        text: 'Ties resolved by head-to-head results or play-offs, odd numbers of teams handled with byes, and sub-tournaments for every placing all needed careful modelling and many tests on edge cases.',
+      },
+      {
+        title: 'Security without a custom server',
+        text: 'Since the app writes straight to Firestore, every role and permission is expressed in security rules and verified with automated tests.',
+      },
+      {
+        title: 'Keeping the codebase tidy',
+        text: 'As features piled up I reorganised the project by feature area (tournaments, registration, chat, accounts). Starting with that structure from day one would have saved a large refactor later.',
+      },
+    ],
+    gallery: [
+      { src: '/img/projects/scalcia/bracket.png', alt: 'Scalcia knockout bracket, with the winning pair highlighted and the third-place match below' },
+      { src: '/img/projects/scalcia/profile.png', alt: 'Scalcia player profile with tournaments won, matches won, win rate and latest tournaments' },
+      { src: '/img/projects/scalcia/board.png', alt: 'Scalcia teammate finder board, with players looking for a partner in attack or defence' },
     ],
   },
 ]

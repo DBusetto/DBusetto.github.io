@@ -1,10 +1,10 @@
 @use '../../styles/abstracts' as *;
 
 .hero {
-  padding: 8rem 0 5rem;
+  padding: 6.5rem 0 3.5rem;
 
   @include below(md) {
-    padding-top: 5rem;
+    padding-top: 4rem;
   }
 }
 

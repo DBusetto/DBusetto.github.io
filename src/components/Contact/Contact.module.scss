@@ -1,25 +1,77 @@
+@use '../../styles/abstracts' as *;
+
 .contact {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1.25rem;
+  gap: 1.5rem;
 }
 
 .text {
+  max-width: 560px;
   color: var(--text-muted);
+  font-size: 1.05rem;
   margin: 0;
 }
 
-.socials {
+// Email e social sulla stessa riga; su schermi stretti vanno a capo
+.actions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.75rem;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
+.email {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 // Loghi in bianco, come nella barra laterale
 .logo {
   filter: brightness(0) invert(1);
+}
+
+.copyWrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.copy {
+  @include glass;
+  @include lift;
+  @include focus-ring;
+  display: inline-grid;
+  place-items: center;
+  width: 2.9rem;
+  height: 2.9rem;
+  padding: 0;
+  border-radius: 50%;
+  color: var(--text);
+  cursor: pointer;
+}
+
+// Il messaggio compare sopra il pulsante, senza spostare gli altri elementi
+.status {
+  position: absolute;
+  bottom: calc(100% + 0.4rem);
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.bubble {
+  display: block;
+  white-space: nowrap;
+  padding: 0.2rem 0.6rem;
+  border-radius: $radius-pill;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-fallback);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--pink-light);
 }

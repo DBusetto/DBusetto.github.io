@@ -1,7 +1,13 @@
 @use '../../styles/abstracts' as *;
 
 .section {
-  padding: 4.5rem 0;
+  padding: 3rem 0;
+  // Con l'ancora (/#skills) il titolo non resta attaccato al bordo della finestra
+  scroll-margin-top: 1rem;
+
+  @include below(sm) {
+    padding: 2.25rem 0;
+  }
 }
 
 .inner {
@@ -11,4 +17,8 @@
 .title {
   font-size: clamp(1.6rem, 3vw, 2rem);
   margin-bottom: 2rem;
+
+  @include below(sm) {
+    margin-bottom: 1.5rem;
+  }
 }

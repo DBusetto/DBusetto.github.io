@@ -146,6 +146,10 @@
   list-style: none;
   margin: 1.25rem 0 0;
   padding: 0;
+
+  @include below(sm) {
+    gap: 0.6rem;
+  }
 }
 
 .feature {
@@ -163,6 +167,22 @@
     font-size: 0.92rem;
     line-height: 1.55;
   }
+
+  // Su mobile le card sono una sotto l'altra: icona a sinistra del testo, per accorciare la pagina
+  @include below(sm) {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 0.9rem;
+    padding: 1rem;
+
+    .featureIcon {
+      grid-row: span 2;
+    }
+
+    h3 {
+      margin: 0 0 0.2rem;
+    }
+  }
 }
 
 // Riquadro dell'icona, nel colore del progetto
@@ -178,16 +198,106 @@
   color: var(--pink-light);
 }
 
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0;
+}
+
+.stackItem {
+  @include glass;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: $radius-pill;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.challenges {
+  @include auto-grid(300px, 1rem);
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+}
+
+.challenge {
+  height: 100%;
+  padding: 1.25rem 1.4rem;
+
+  h3 {
+    font-size: 1rem;
+    margin: 0.35rem 0 0.4rem;
+  }
+
+  // Viene dopo `.text p`: a parità di specificità vince questa
+  p {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+}
+
+.challengeNumber {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--pink-light);
+}
+
+// Card finale con l'invito all'azione, velata col colore del progetto
+.outro {
+  margin-top: 3rem;
+  padding: 2rem;
+  text-align: center;
+  background-image: radial-gradient(120% 140% at 50% 0%, var(--pink-soft), transparent 70%);
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.4rem;
+  }
+
+  p {
+    color: var(--text-muted);
+    margin: 0 auto;
+    max-width: 460px;
+  }
+
+  .actions {
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
+}
+
 .gallery {
   @include auto-grid(220px, 0.75rem);
   list-style: none;
   margin: 0;
   padding: 0;
 
+  // Ombra che segue la forma dell'immagine: va bene sia per screenshot rettangolari sia per telefoni scontornati
   img {
     width: 100%;
     border-radius: $radius;
-    border: 1px solid var(--glass-border);
+    filter: drop-shadow(0 12px 28px var(--pink-soft));
+  }
+
+  // Su mobile una striscia da scorrere di lato, con l'immagine successiva che si intravede
+  @include below(sm) {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 1.5rem;
+    scrollbar-width: none;
+
+    li {
+      flex: 0 0 68%;
+      scroll-snap-align: center;
+    }
   }
 }
 

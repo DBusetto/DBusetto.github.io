@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect } from 'react'
+import { useEffect, useLayoutEffect, type ReactNode } from 'react'
 import { ArrowLeft, ArrowRight, SquareArrowOutUpRight } from 'lucide-react'
 import { Link, useParams } from 'react-router'
 import ButtonLink from '../../components/ButtonLink/ButtonLink'
@@ -6,18 +6,55 @@ import Card from '../../components/Card/Card'
 import TagList from '../../components/TagList/TagList'
 import { findProject, getAdjacentProjects, themeVariables } from '../../data/projects'
 import { profile, projects } from '../../data/portfolio'
-import type { Feature } from '../../data/types'
+import type { Challenge, Feature, Skill } from '../../data/types'
 import styles from './ProjectPage.module.scss'
 
 /** Sezione di testo libero: non viene mostrata se non ha paragrafi. */
-function TextSection({ title, paragraphs }: { title: string; paragraphs?: string[] }) {
+function TextSection({ title, paragraphs, children }: { title: string; paragraphs?: string[]; children?: ReactNode }) {
   if (!paragraphs?.length) return null
   return (
     <section className={styles.text}>
       <h2>{title}</h2>
+      {children}
       {paragraphs.map((paragraph, i) => (
         <p key={i}>{paragraph}</p>
       ))}
+    </section>
+  )
+}
+
+/** Loghi delle tecnologie usate, in riga. */
+function StackList({ stack }: { stack?: Skill[] }) {
+  if (!stack?.length) return null
+  return (
+    <ul className={styles.stack} aria-label="Tech stack">
+      {stack.map((skill) => (
+        <li key={skill.name} className={styles.stackItem}>
+          {skill.icon && <img src={skill.icon} alt="" width={20} height={20} />}
+          {skill.name}
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+/** Sfide come card problema → soluzione: non viene mostrata se è vuota. */
+function ChallengeSection({ challenges }: { challenges?: Challenge[] }) {
+  if (!challenges?.length) return null
+  return (
+    <section className={styles.text}>
+      <h2>Challenges &amp; solutions</h2>
+      <ul className={styles.challenges}>
+        {challenges.map(({ title, text }, i) => (
+          <li key={title}>
+            <Card className={styles.challenge}>
+              <span className={styles.challengeNumber} aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </Card>
+          </li>
+        ))}
+      </ul>
     </section>
   )
 }
@@ -124,7 +161,7 @@ export default function ProjectPage() {
         )}
       </header>
 
-      {project.cover && <img src={project.cover} alt={project.title} className={styles.cover} />}
+      {project.cover && <img src={project.cover} alt={`Screens of ${project.title}`} className={styles.cover} />}
 
       {facts.length > 0 && (
         <dl className={styles.facts}>
@@ -139,8 +176,10 @@ export default function ProjectPage() {
 
       <TextSection title="Goal" paragraphs={project.goal} />
       <FeatureSection features={project.features} />
-      <TextSection title="How I built it" paragraphs={project.approach} />
-      <TextSection title="Challenges & solutions" paragraphs={project.challenges} />
+      <TextSection title="How I built it" paragraphs={project.approach}>
+        <StackList stack={project.stack} />
+      </TextSection>
+      <ChallengeSection challenges={project.challenges} />
 
       {project.gallery?.length ? (
         <section className={styles.text}>
@@ -155,22 +194,43 @@ export default function ProjectPage() {
         </section>
       ) : null}
 
-      <nav className={styles.adjacent} aria-label="More projects">
-        {previous ? (
-          <Link to={`/projects/${previous.slug}`} className={styles.adjacentLink}>
-            <span className={styles.adjacentLabel}><ArrowLeft size={14} aria-hidden="true" /> Previous project</span>
-            {previous.title}
-          </Link>
-        ) : (
-          <span />
-        )}
-        {next && (
-          <Link to={`/projects/${next.slug}`} className={`${styles.adjacentLink} ${styles.next}`}>
-            <span className={styles.adjacentLabel}>Next project <ArrowRight size={14} aria-hidden="true" /></span>
-            {next.title}
-          </Link>
-        )}
-      </nav>
+      {/* Chiusura della pagina: invito a provare il prodotto o a scrivermi */}
+      <Card className={styles.outro}>
+        <h2>{project.live ? `Try ${project.title} yourself` : 'Like what you see?'}</h2>
+        <p>
+          {project.live
+            ? 'It’s live in production: open it and have a look around, or drop me a line if you have questions.'
+            : 'I’m happy to talk about how I built it.'}
+        </p>
+        <div className={styles.actions}>
+          {project.live && (
+            <ButtonLink href={project.live} target="_blank" rel="noreferrer" variant="primary">
+              Open {project.title} <SquareArrowOutUpRight size={16} aria-hidden="true" />
+            </ButtonLink>
+          )}
+          <ButtonLink to="/#contact">Get in touch</ButtonLink>
+        </div>
+      </Card>
+
+      {/* Con un solo progetto non c'è niente da sfogliare */}
+      {(previous || next) && (
+        <nav className={styles.adjacent} aria-label="More projects">
+          {previous ? (
+            <Link to={`/projects/${previous.slug}`} className={styles.adjacentLink}>
+              <span className={styles.adjacentLabel}><ArrowLeft size={14} aria-hidden="true" /> Previous project</span>
+              {previous.title}
+            </Link>
+          ) : (
+            <span />
+          )}
+          {next && (
+            <Link to={`/projects/${next.slug}`} className={`${styles.adjacentLink} ${styles.next}`}>
+              <span className={styles.adjacentLabel}>Next project <ArrowRight size={14} aria-hidden="true" /></span>
+              {next.title}
+            </Link>
+          )}
+        </nav>
+      )}
     </article>
   )
 }

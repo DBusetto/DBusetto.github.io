@@ -4,6 +4,10 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+
+  @include below(sm) {
+    gap: 1.5rem;
+  }
 }
 
 .groupTitle {
@@ -13,6 +17,10 @@
   text-transform: uppercase;
   color: var(--text-muted);
   margin-bottom: 0.9rem;
+
+  @include below(sm) {
+    margin-bottom: 0.65rem;
+  }
 }
 
 .grid {
@@ -20,23 +28,55 @@
   list-style: none;
   margin: 0;
   padding: 0;
+
+  // Tessere più piccole: tre per riga anche sui telefoni stretti (360px)
+  @include below(sm) {
+    @include auto-grid(92px, 0.5rem);
+  }
 }
 
 .tile {
   @include glass;
   @include lift;
   border-radius: $radius;
-  padding: 1rem 0.5rem 0.8rem;
+  padding: 0.8rem 0.5rem 0.75rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.4rem;
   text-align: center;
+
+  @include below(sm) {
+    padding: 0.6rem 0.3rem 0.55rem;
+    gap: 0.25rem;
+  }
+}
+
+// Alone chiaro dietro il logo: rende leggibili anche i loghi scuri (es. .NET) sul fondo scuro
+.badge {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.05) 70%, transparent);
+
+  @include below(sm) {
+    width: 38px;
+    height: 38px;
+  }
 }
 
 .logo {
   width: 36px;
   height: 36px;
+  // Filo di luce sul contorno del logo
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.45));
+
+  @include below(sm) {
+    width: 28px;
+    height: 28px;
+  }
 }
 
 .fallback {
@@ -46,4 +86,9 @@
 .name {
   font-size: 0.85rem;
   font-weight: 500;
+
+  @include below(sm) {
+    font-size: 0.78rem;
+    line-height: 1.3;
+  }
 }

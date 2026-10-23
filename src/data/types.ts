@@ -35,6 +35,21 @@ export interface Feature {
   icon: LucideIcon
 }
 
+export interface Challenge {
+  /** Il problema, in poche parole. */
+  title: string
+  /** Come l'ho risolto. */
+  text: string
+}
+
+/** Tappa del percorso nella sezione About, dalla più vecchia alla più recente. */
+export interface TimelineStep {
+  /** Etichetta breve sopra il titolo: anni ('2019 – 2021') o fase ('Today'). */
+  label: string
+  title: string
+  text?: string
+}
+
 /** Colori dell'app del progetto: sostituiscono l'accento rosa nella card e in tutta la pagina del progetto. */
 export interface ProjectTheme {
   /** Colore principale, in esadecimale (es. '#a855f7'). */
@@ -72,7 +87,9 @@ export interface Project {
   /** Funzionalità principali, mostrate come griglia di card. */
   features?: Feature[]
   approach?: string[]
-  challenges?: string[]
+  /** Tecnologie usate, mostrate come loghi in cima a "How I built it". */
+  stack?: Skill[]
+  challenges?: Challenge[]
   gallery?: GalleryImage[]
 }
 

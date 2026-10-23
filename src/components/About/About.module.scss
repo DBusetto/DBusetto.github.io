@@ -7,3 +7,68 @@
     margin-top: 0;
   }
 }
+
+// Percorso verticale: una linea a sinistra con un punto per tappa, l'ultima (oggi) accesa
+.timeline {
+  position: relative;
+  max-width: 680px;
+  list-style: none;
+  margin: 2.25rem 0 0;
+  padding: 0 0 0 1.75rem;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    left: 0.35rem;
+    width: 2px;
+    border-radius: 1px;
+    background: linear-gradient(to bottom, var(--glass-border), var(--pink-edge));
+  }
+}
+
+.step {
+  position: relative;
+
+  & + & {
+    margin-top: 1.5rem;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0.3rem;
+    left: -1.75rem;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--pink-edge);
+  }
+
+  &:last-child::before {
+    background: var(--pink);
+    border-color: var(--pink-light);
+    box-shadow: 0 0 0 4px var(--pink-soft);
+  }
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pink-light);
+}
+
+.title {
+  font-size: 1.05rem;
+  margin: 0.15rem 0 0.2rem;
+}
+
+.text {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
