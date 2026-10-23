@@ -6,6 +6,7 @@ import Card from '../../components/Card/Card'
 import TagList from '../../components/TagList/TagList'
 import { findProject, getAdjacentProjects, themeVariables } from '../../data/projects'
 import { profile, projects } from '../../data/portfolio'
+import type { Feature } from '../../data/types'
 import styles from './ProjectPage.module.scss'
 
 /** Sezione di testo libero: non viene mostrata se non ha paragrafi. */
@@ -21,15 +22,23 @@ function TextSection({ title, paragraphs }: { title: string; paragraphs?: string
   )
 }
 
-/** Elenco puntato: non viene mostrato se è vuoto. */
-function ListSection({ title, items }: { title: string; items?: string[] }) {
-  if (!items?.length) return null
+/** Griglia di card delle funzionalità: non viene mostrata se è vuota. */
+function FeatureSection({ features }: { features?: Feature[] }) {
+  if (!features?.length) return null
   return (
     <section className={styles.text}>
-      <h2>{title}</h2>
-      <ul className={styles.list}>
-        {items.map((item, i) => (
-          <li key={i}>{item}</li>
+      <h2>Key features</h2>
+      <ul className={styles.features}>
+        {features.map(({ title, text, icon: Icon }) => (
+          <li key={title}>
+            <Card className={styles.feature}>
+              <span className={styles.featureIcon}>
+                <Icon size={20} aria-hidden="true" />
+              </span>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </Card>
+          </li>
         ))}
       </ul>
     </section>
@@ -121,7 +130,7 @@ export default function ProjectPage() {
       )}
 
       <TextSection title="Goal" paragraphs={project.goal} />
-      <ListSection title="Key features" items={project.features} />
+      <FeatureSection features={project.features} />
       <TextSection title="How I built it" paragraphs={project.approach} />
       <TextSection title="Challenges & solutions" paragraphs={project.challenges} />
 

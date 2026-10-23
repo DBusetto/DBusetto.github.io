@@ -1,3 +1,5 @@
+import type { LucideIcon } from 'lucide-react'
+
 export interface Profile {
   name: string
   role: string
@@ -22,6 +24,15 @@ export interface SkillGroup {
 export interface GalleryImage {
   src: string
   alt: string
+}
+
+export interface Feature {
+  /** Nome breve, due o tre parole. */
+  title: string
+  /** Una frase che spiega cosa fa. */
+  text: string
+  /** Icona di Lucide (https://lucide.dev/icons), importata da 'lucide-react'. */
+  icon: LucideIcon
 }
 
 /** Colori dell'app del progetto: sostituiscono l'accento rosa nella card e in tutta la pagina del progetto. */
@@ -58,8 +69,8 @@ export interface Project {
   status?: string
   /** Paragrafi delle sezioni della pagina progetto: una sezione vuota non viene mostrata. */
   goal?: string[]
-  /** Elenco puntato delle funzionalità principali. */
-  features?: string[]
+  /** Funzionalità principali, mostrate come griglia di card. */
+  features?: Feature[]
   approach?: string[]
   challenges?: string[]
   gallery?: GalleryImage[]

@@ -1,5 +1,19 @@
 // Tutti i contenuti del sito stanno qui: modifica questo file per personalizzare il portfolio.
 
+import {
+  ChartColumn,
+  LayoutGrid,
+  ListOrdered,
+  MessagesSquare,
+  Network,
+  QrCode,
+  ShieldCheck,
+  Trophy,
+  UserPlus,
+  Users,
+  WifiOff,
+  Zap,
+} from 'lucide-react'
 import * as icons from './icons'
 import type { Profile, Project, SkillGroup, Social } from './types'
 
@@ -75,17 +89,66 @@ export const projects: Project[] = [
       'Scalcia moves the whole tournament onto the phone. Organisers set it up and run it from the venue, referees record results with a couple of taps, and every player follows groups, matches and brackets live from a link or a QR code, with nothing to download.',
     ],
     features: [
-      'Several tournaments at once (live, upcoming and archived), each with a public page that updates in real time.',
-      'Online sign-ups for pairs and singles, with optional seat limits or a random draw of the pairs on the day.',
-      'Teammate finder: a board for each tournament plus a general board to find a partner by preferred role, attack or defence.',
-      'Group stage with automatic or manual groups, two match-ordering modes and head-to-head tie-breakers.',
-      'Knockout brackets with byes, an optional third-place match and sub-tournaments that keep every team playing.',
-      'Table management: as soon as a result is confirmed, the freed table is assigned to the next match in the queue.',
-      'Staff roles (master, organiser, co-organiser, referee) with Google sign-in.',
-      'Player accounts with personal stats, an all-time ranking, a tournament archive and your own team highlighted on screen.',
-      'Direct messages between players and announcement channels for organisers.',
-      'Shareable posters with a QR code, in A4 for printing or Stories format for social media.',
-      'Installable as an app, and resilient to poor venue Wi-Fi: results entered offline are sent as soon as the connection returns.',
+      {
+        icon: Zap,
+        title: 'Live everywhere',
+        text: 'Every score, standing and bracket updates instantly on every phone, with no need to refresh.',
+      },
+      {
+        icon: Trophy,
+        title: 'Many tournaments',
+        text: 'Live, upcoming and archived tournaments side by side, each with its own public page.',
+      },
+      {
+        icon: UserPlus,
+        title: 'Online sign-ups',
+        text: 'Pairs and singles sign up from the app, with optional seat limits or a random draw of the pairs.',
+      },
+      {
+        icon: Users,
+        title: 'Teammate finder',
+        text: 'Boards to find a partner for a tournament or just to play, by preferred role: attack or defence.',
+      },
+      {
+        icon: LayoutGrid,
+        title: 'Groups & standings',
+        text: 'Automatic or manual groups, two match-ordering modes and head-to-head tie-breakers.',
+      },
+      {
+        icon: Network,
+        title: 'Knockout brackets',
+        text: 'Byes, an optional third-place match and sub-tournaments that keep every team playing.',
+      },
+      {
+        icon: ListOrdered,
+        title: 'Smart table queue',
+        text: 'As soon as a result is confirmed, the freed table goes to the next match in line.',
+      },
+      {
+        icon: ShieldCheck,
+        title: 'Staff roles',
+        text: 'Master, organiser, co-organiser and referee, each signing in with Google and with just the permissions they need.',
+      },
+      {
+        icon: ChartColumn,
+        title: 'Player profiles',
+        text: 'Personal stats, an all-time ranking, the tournament archive and your own team highlighted on screen.',
+      },
+      {
+        icon: MessagesSquare,
+        title: 'Messages & channels',
+        text: 'Direct chats between players and announcement channels to keep followers in the loop.',
+      },
+      {
+        icon: QrCode,
+        title: 'Posters with QR code',
+        text: 'Shareable posters generated in the app, in A4 for printing or Stories format for social media.',
+      },
+      {
+        icon: WifiOff,
+        title: 'Offline-ready app',
+        text: 'Installable on the phone and resilient to poor Wi-Fi: offline results are sent when the connection returns.',
+      },
     ],
     approach: [
       'Scalcia is a single-page app built with React, TypeScript and Vite, styled with Sass modules. Firebase handles the backend: Firestore keeps every screen in sync in real time, Authentication provides Google sign-in for staff and players (plus anonymous sessions for the public pages), and Hosting serves it as an installable PWA.',

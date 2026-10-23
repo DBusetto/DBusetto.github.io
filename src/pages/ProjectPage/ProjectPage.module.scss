@@ -102,19 +102,41 @@
   }
 }
 
-.list {
-  margin: 0;
-  padding-left: 1.25rem;
-  color: var(--text-muted);
+.features {
+  @include auto-grid(220px, 1rem);
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+}
 
-  li {
-    margin-bottom: 0.5rem;
-    padding-left: 0.25rem;
+.feature {
+  height: 100%;
+  padding: 1.25rem;
+
+  h3 {
+    font-size: 1rem;
+    margin: 0.9rem 0 0.35rem;
   }
 
-  li::marker {
-    color: var(--pink-light);
+  // Viene dopo `.text p`: a parità di specificità vince questa
+  p {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.55;
   }
+}
+
+// Riquadro dell'icona, nel colore del progetto
+.featureIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 12px;
+  background: var(--chip-bg);
+  border: 1px solid var(--pink-edge);
+  color: var(--pink-light);
 }
 
 .gallery {
