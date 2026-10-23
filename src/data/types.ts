@@ -57,7 +57,7 @@ export interface Project {
   repo?: string
   /** Versione dimostrativa: pulsante "Live demo". */
   demo?: string
-  /** Prodotto vero, in uso online: pulsante "Open the app" (al posto della demo). */
+  /** Prodotto vero, in uso online: il titolo della pagina diventa un link che lo apre. */
   live?: string
   /** Icona dell'app, quadrata, es. '/img/projects/scalcia/icon.png' (file in /public). */
   icon?: string

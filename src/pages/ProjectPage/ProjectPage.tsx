@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect } from 'react'
-import { ArrowLeft, ArrowRight } from 'lucide-react'
+import { ArrowLeft, ArrowRight, SquareArrowUpRight } from 'lucide-react'
 import { Link, useParams } from 'react-router'
 import ButtonLink from '../../components/ButtonLink/ButtonLink'
 import Card from '../../components/Card/Card'
@@ -99,14 +99,22 @@ export default function ProjectPage() {
 
       <header className={styles.header}>
         {project.icon && <img src={project.icon} alt="" className={styles.icon} width={72} height={72} />}
-        <h1 className={styles.title}>{project.title}</h1>
+        <h1 className={styles.title}>
+          {/* Un prodotto online si apre dal titolo stesso */}
+          {project.live ? (
+            <a href={project.live} target="_blank" rel="noreferrer" className={styles.titleLink}>
+              {project.title}
+              <SquareArrowUpRight className={styles.titleIcon} aria-hidden="true" />
+            </a>
+          ) : (
+            project.title
+          )}
+        </h1>
         <p className={styles.summary}>{project.summary}</p>
         <TagList items={project.tags} />
-        {(project.live || project.demo || project.repo) && (
+        {(project.demo || project.repo) && (
           <div className={styles.actions}>
-            {project.live ? (
-              <ButtonLink href={project.live} target="_blank" rel="noreferrer" variant="primary">Open the app</ButtonLink>
-            ) : project.demo && (
+            {project.demo && (
               <ButtonLink href={project.demo} target="_blank" rel="noreferrer" variant="primary">Live demo</ButtonLink>
             )}
             {project.repo && (

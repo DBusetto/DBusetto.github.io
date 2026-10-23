@@ -45,6 +45,33 @@
   padding-bottom: 0.08em;
 }
 
+// Titolo-link: il testo resta trasparente e mostra la sfumatura del titolo
+.titleLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  color: inherit;
+  border-radius: 8px;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+// Quadrato con freccia verso l'angolo: segnala che il titolo apre il prodotto
+.titleIcon {
+  flex-shrink: 0;
+  width: 0.6em;
+  height: 0.6em;
+  stroke-width: 2.25;
+  color: var(--pink-light);
+  transition: transform $transition;
+
+  .titleLink:hover & {
+    transform: translate(0.06em, -0.06em);
+  }
+}
+
 .summary {
   color: var(--text-muted);
   font-size: 1.1rem;
