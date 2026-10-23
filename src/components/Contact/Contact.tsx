@@ -5,9 +5,9 @@ import styles from './Contact.module.scss'
 
 export default function Contact() {
   return (
-    <Section id="contact" title="Contatti">
+    <Section id="contact" title="Contact">
       <div className={styles.contact}>
-        <p className={styles.text}>Hai un progetto in mente o vuoi semplicemente salutarmi? Scrivimi!</p>
+        <p className={styles.text}>Have a project in mind or just want to say hi? Drop me a line!</p>
         <ButtonLink href={`mailto:${profile.email}`} variant="primary">{profile.email}</ButtonLink>
         <ul className={styles.socials}>
           {socials.map((social) => (

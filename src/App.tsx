@@ -10,7 +10,7 @@ export default function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<HomePage />} />
-          <Route path="progetti/:slug" element={<ProjectPage />} />
+          <Route path="projects/:slug" element={<ProjectPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

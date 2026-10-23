@@ -25,8 +25,22 @@
   flex-direction: column;
 }
 
+.heading {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 0.5em;
+}
+
+.icon {
+  flex-shrink: 0;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+}
+
 .title {
   color: var(--text);
+  margin: 0;
 }
 
 .summary {

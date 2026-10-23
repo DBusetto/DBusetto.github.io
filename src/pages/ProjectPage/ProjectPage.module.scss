@@ -27,6 +27,12 @@
   margin-bottom: 2rem;
 }
 
+.icon {
+  border-radius: $radius-card;
+  border: 1px solid var(--glass-border);
+  margin-bottom: 1.25rem;
+}
+
 .title {
   font-size: clamp(2.2rem, 6vw, 3.25rem);
   font-weight: 800;
@@ -93,6 +99,21 @@
   p {
     color: var(--text-muted);
     margin: 0 0 0.9rem;
+  }
+}
+
+.list {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: var(--text-muted);
+
+  li {
+    margin-bottom: 0.5rem;
+    padding-left: 0.25rem;
+  }
+
+  li::marker {
+    color: var(--pink-light);
   }
 }
 

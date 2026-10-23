@@ -24,8 +24,20 @@ export interface GalleryImage {
   alt: string
 }
 
+/** Colori dell'app del progetto: sostituiscono l'accento rosa nella card e in tutta la pagina del progetto. */
+export interface ProjectTheme {
+  /** Colore principale, in esadecimale (es. '#a855f7'). */
+  accent: string
+  /** Variante chiara, per testi e link sul fondo scuro (contrasto almeno 4.5:1). */
+  accentLight: string
+  /** Inizio e fine della sfumatura del pulsante principale. */
+  gradient: [string, string]
+  /** Colore dell'alone in basso a destra. Se manca si usa `accentLight`. */
+  glow?: string
+}
+
 export interface Project {
-  /** Parte finale dell'indirizzo della pagina: /progetti/<slug>. Minuscole, numeri e trattini. */
+  /** Parte finale dell'indirizzo della pagina: /projects/<slug>. Minuscole, numeri e trattini. */
   slug: string
   title: string
   /** Una frase che dice cos'è il progetto e a chi serve. */
@@ -33,13 +45,18 @@ export interface Project {
   tags: string[]
   repo?: string
   demo?: string
-  /** Immagine di copertina, es. '/img/progetti/progetto-uno/cover.png' (file in /public). */
+  /** Icona dell'app, quadrata, es. '/img/projects/scalcia/icon.png' (file in /public). */
+  icon?: string
+  theme?: ProjectTheme
+  /** Immagine di copertina, es. '/img/projects/progetto-uno/cover.png' (file in /public). */
   cover?: string
   role?: string
   period?: string
   status?: string
   /** Paragrafi delle sezioni della pagina progetto: una sezione vuota non viene mostrata. */
   goal?: string[]
+  /** Elenco puntato delle funzionalità principali. */
+  features?: string[]
   approach?: string[]
   challenges?: string[]
   gallery?: GalleryImage[]

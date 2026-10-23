@@ -9,11 +9,11 @@ export default function Sidebar() {
   const { pathname } = useLocation()
   const onHome = pathname === '/'
   const sectionInView = useActiveSection(sectionIds, onHome)
-  // Nelle pagine progetto resta accesa "Progetti"; nella 404 nessuna voce
-  const active = onHome ? sectionInView : pathname.startsWith('/progetti/') ? 'projects' : null
+  // Nelle pagine progetto resta accesa "Projects"; nella 404 nessuna voce
+  const active = onHome ? sectionInView : pathname.startsWith('/projects/') ? 'projects' : null
 
   return (
-    <nav className={styles.sidebar} aria-label="Navigazione principale">
+    <nav className={styles.sidebar} aria-label="Main navigation">
       <Link to="/#top" className={styles.brand}>{profile.name}</Link>
 
       <ul className={styles.items}>
