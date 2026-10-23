@@ -58,7 +58,7 @@ export const projects: Project[] = [
     title: 'Scalcia',
     summary: 'A real-time web app to run foosball tournaments from sign-ups to the final, built to make the day easier and more fun for organisers and players alike.',
     tags: ['React', 'TypeScript', 'Firebase', 'PWA', 'Sass'],
-    demo: 'https://scalcia-app.web.app',
+    live: 'https://scalcia-app.web.app',
     icon: '/img/projects/scalcia/icon.png',
     // Colori dell'app: viola come identità, lime come accento
     theme: {

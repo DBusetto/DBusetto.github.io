@@ -93,10 +93,12 @@ export default function ProjectPage() {
         <h1 className={styles.title}>{project.title}</h1>
         <p className={styles.summary}>{project.summary}</p>
         <TagList items={project.tags} />
-        {(project.demo || project.repo) && (
+        {(project.live || project.demo || project.repo) && (
           <div className={styles.actions}>
-            {project.demo && (
-              <ButtonLink href={project.demo} target="_blank" rel="noreferrer" variant="primary">Demo live</ButtonLink>
+            {project.live ? (
+              <ButtonLink href={project.live} target="_blank" rel="noreferrer" variant="primary">Open the app</ButtonLink>
+            ) : project.demo && (
+              <ButtonLink href={project.demo} target="_blank" rel="noreferrer" variant="primary">Live demo</ButtonLink>
             )}
             {project.repo && (
               <ButtonLink href={project.repo} target="_blank" rel="noreferrer">Code on GitHub</ButtonLink>

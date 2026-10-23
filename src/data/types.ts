@@ -44,7 +44,10 @@ export interface Project {
   summary: string
   tags: string[]
   repo?: string
+  /** Versione dimostrativa: pulsante "Live demo". */
   demo?: string
+  /** Prodotto vero, in uso online: pulsante "Open the app" (al posto della demo). */
+  live?: string
   /** Icona dell'app, quadrata, es. '/img/projects/scalcia/icon.png' (file in /public). */
   icon?: string
   theme?: ProjectTheme
