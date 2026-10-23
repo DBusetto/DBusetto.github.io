@@ -58,6 +58,18 @@
   }
 }
 
+// La sottolineatura va sul solo testo (non sotto l'icona) e ha un colore suo: il testo è trasparente
+.titleText {
+  text-decoration: underline transparent;
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.14em;
+  transition: text-decoration-color $transition;
+
+  .titleLink:hover & {
+    text-decoration-color: var(--pink-light);
+  }
+}
+
 // Quadrato con freccia verso l'angolo: segnala che il titolo apre il prodotto
 .titleIcon {
   flex-shrink: 0;

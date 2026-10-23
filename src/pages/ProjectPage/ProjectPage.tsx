@@ -103,7 +103,7 @@ export default function ProjectPage() {
           {/* Un prodotto online si apre dal titolo stesso */}
           {project.live ? (
             <a href={project.live} target="_blank" rel="noreferrer" className={styles.titleLink}>
-              {project.title}
+              <span className={styles.titleText}>{project.title}</span>
               <SquareArrowOutUpRight className={styles.titleIcon} aria-hidden="true" />
             </a>
           ) : (
