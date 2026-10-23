@@ -1,10 +1,15 @@
 @use '../../styles/abstracts' as *;
 
+// Stesso contenitore delle sezioni della home, così il bordo sinistro coincide;
+// il contenuto resta più stretto per una lettura comoda
 .page {
   @include container;
-  max-width: 820px;
   padding-top: 3rem;
   padding-bottom: 4rem;
+
+  > * {
+    max-width: 820px;
+  }
 }
 
 .back {
