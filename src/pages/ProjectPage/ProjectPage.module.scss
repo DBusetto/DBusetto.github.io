@@ -58,14 +58,14 @@
   }
 }
 
-// La sottolineatura va sul solo testo (non sotto l'icona) e ha un colore suo: il testo è trasparente
+// Sottolineatura sul solo testo (non sotto l'icona), con un colore suo perché il testo è trasparente.
+// Solo all'hover: la sfumatura del titolo riempie anche una linea trasparente, che resterebbe visibile.
 .titleText {
-  text-decoration: underline transparent;
   text-decoration-thickness: 0.06em;
   text-underline-offset: 0.14em;
-  transition: text-decoration-color $transition;
 
   .titleLink:hover & {
+    text-decoration-line: underline;
     text-decoration-color: var(--pink-light);
   }
 }
